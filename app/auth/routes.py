@@ -85,6 +85,7 @@ def registro():
 @auth_bp.route('/login-google')
 def login_google():
     redirect_uri = url_for('auth.google_callback', _external=True)
+    print(redirect_uri)
     return google.authorize_redirect(redirect_uri)
 
 @auth_bp.route('/google-callback', methods=['GET', 'POST'])
