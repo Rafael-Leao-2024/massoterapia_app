@@ -1,0 +1,160 @@
+{# app/templates/admin/agendamentos.html #}
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid mt-5 pt-4">
+    <div class="row">
+        <div class="col-md-2 mb-4">
+            <div class="card-premium p-3">
+                <div class="text-center">
+                    <i class="bi bi-gem fs-1 text-warning"></i>
+                    <h5 class="mt-2">Admin</h5>
+                    <hr>
+                    <a href="{{ url_for('admin.dashboard') }}" class="btn btn-outline-premium w-100 mb-2">
+                        <i class="bi bi-speedometer2"></i> Dashboard
+                    </a>
+                    <a href="{{ url_for('admin.agendamentos') }}" class="btn btn-outline-premium w-100 mb-2">
+                        <i class="bi bi-calendar"></i> Agendamentos
+                    </a>
+                    <a href="{{ url_for('admin.clientes') }}" class="btn btn-outline-premium w-100">
+                        <i class="bi bi-people"></i> Clientes
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-10">
+            <div class="card-premium p-4">
+                <h3 class="mb-4">Gerenciar Agendamentos</h3>
+                
+                <!-- Filtros -->
+                <form method="GET" class="row g-3 mb-4">
+                    <div class="col-md-3">
+                        <label class="form-label">Status</label>
+                        <select name="status" class="form-control">
+                            <option value="">Todos</option>
+                            <option value="PENDENTE" {% if status_filter == 'PENDENTE' %}selected{% endif %}>Pendente</option>
+                            <option value="CONFIRMADO" {% if status_filter == 'CONFIRMADO' %}selected{% endif %}>Confirmado</option>
+                            <option value="CONCLUIDO" {% if status_filter == 'CONCLUIDO' %}selected{% endif %}>Concluído</option>
+                            <option value="CANCELADO" {% if status_filter == 'CANCELADO' %}selected{% endif %}>Cancelado</option>
+                        </select>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <label class="form-label">Data</label>
+                        <input type="date" name="data" class="form-control" value="{{ data_filter }}">
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <label class="form-label">Cliente</label>
+                        <input type="text" name="cliente" class="form-control" placeholder="Nome do cliente" 
+                               value="{{ cliente_filter }}">
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <label class="form-label">&nbsp;</label>
+                        <button type="submit" class="btn btn-premium w-100">
+                            <i class="bi bi-funnel"></i> Filtrar
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Cliente</th>
+                                <th>Serviço</th>
+                                <th>Data</th>
+                                <th>Horário</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for agendamento in agendamentos %}
+                            <tr>
+                                <td>{{ agendamento.usuario.nome }}</td>
+                                <td>{{ agendamento.servico_display }}</td>
+                                <td>{{ agendamento.data.strftime('%d/%m/%Y') }}</td>
+                                <td>{{ agendamento.horario.strftime('%H:%M') }}</td>
+                                <td>
+                                    <select class="form-select form-select-sm status-select" 
+                                            data-id="{{ agendamento.id }}" 
+                                            style="width: auto;">
+                                        <option value="PENDENTE" {% if agendamento.status == 'PENDENTE' %}selected{% endif %}>
+                                            Pendente
+                                        </option>
+                                        <option value="CONFIRMADO" {% if agendamento.status == 'CONFIRMADO' %}selected{% endif %}>
+                                            Confirmado
+                                        </option>
+                                        <option value="CONCLUIDO" {% if agendamento.status == 'CONCLUIDO' %}selected{% endif %}>
+                                            Concluído
+                                        </option>
+                                        <option value="CANCELADO" {% if agendamento.status == 'CANCELADO' %}selected{% endif %}>
+                                            Cancelado
+                                        </option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-danger delete-btn" data-id="{{ agendamento.id }}">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                
+                {% if not agendamentos %}
+                <div class="text-center py-5">
+                    <i class="bi bi-inbox fs-1 text-muted"></i>
+                    <p class="mt-3">Nenhum agendamento encontrado.</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block extra_js %}
+<script>
+    // Alterar status do agendamento
+    document.querySelectorAll('.status-select').forEach(select => {
+        select.addEventListener('change', function() {
+            const id = this.dataset.id;
+            const status = this.value;
+            
+            fetch(`/admin/agendamento/${id}/status`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ status: status })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    location.reload();
+                }
+            });
+        });
+    });
+    
+    // Excluir agendamento
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            if (confirm('Tem certeza que deseja excluir este agendamento?')) {
+                const id = this.dataset.id;
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = `/admin/agendamento/${id}/delete`;
+                document.body.appendChild(form);
+                form.submit();
+            }
+        });
+    });
+</script>
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,89 @@
+{# app/templates/auth/registro.html #}
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card-premium p-4" data-aos="fade-up">
+                <div class="text-center mb-4">
+                    <i class="bi bi-person-plus fs-1 text-warning"></i>
+                    <h3 class="mt-2">Criar Nova Conta</h3>
+                    <p class="text-muted">Preencha os dados para se cadastrar</p>
+                </div>
+                
+                <form method="POST">
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="nome" class="form-label">Nome Completo</label>
+                            <input type="text" class="form-control" id="nome" name="nome" required 
+                                   placeholder="Digite seu nome completo">
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="cpf" class="form-label">CPF</label>
+                            <input type="text" class="form-control" id="cpf" name="cpf" 
+                                   placeholder="123.456.789-00">
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="telefone" class="form-label">Telefone</label>
+                            <input type="tel" class="form-control" id="telefone" name="telefone" required 
+                                   placeholder="(81) 99999-9999">
+                        </div>
+                        
+                        <div class="col-md-12 mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required 
+                                   placeholder="seu@email.com">
+                        </div>
+                        
+                        <div class="col-md-12 mb-3">
+                            <label for="senha" class="form-label">Senha</label>
+                            <input type="password" class="form-control" id="senha" name="senha" required 
+                                   placeholder="Mínimo 6 caracteres">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-premium w-100 mb-3">
+                        <i class="bi bi-check-circle"></i> Cadastrar
+                    </button>
+                </form>
+                
+                <div class="text-center">
+                    <p class="mb-0">Já tem uma conta? 
+                        <a href="{{ url_for('auth.login') }}" class="text-warning text-decoration-none">
+                            Faça login aqui
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block extra_js %}
+<script>
+    // Máscara para CPF
+    document.getElementById('cpf').addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length <= 11) {
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+            e.target.value = value;
+        }
+    });
+    
+    // Máscara para Telefone
+    document.getElementById('telefone').addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length <= 11) {
+            value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
+            value = value.replace(/(\d{5})(\d)/, '$1-$2');
+            e.target.value = value;
+        }
+    });
+</script>
+{% endblock %}
+{% endblock %}

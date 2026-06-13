@@ -1,0 +1,53 @@
+{# app/templates/auth/login.html #}
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card-premium p-4" data-aos="fade-up">
+                <div class="text-center mb-4">
+                    <i class="bi bi-flower2 fs-1 text-warning"></i>
+                    <h3 class="mt-2">Bem-vindo(a) de volta!</h3>
+                    <p class="text-muted">Faça login para acessar sua conta</p>
+                </div>
+                
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required 
+                               placeholder="seu@email.com">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="senha" class="form-label">Senha</label>
+                        <input type="password" class="form-control" id="senha" name="senha" required 
+                               placeholder="********">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-premium w-100 mb-3">
+                        <i class="bi bi-box-arrow-in-right"></i> Entrar
+                    </button>
+                </form>
+                
+                <div class="text-center mb-3">
+                    <p class="text-muted">ou</p>
+                    <a href="{{ url_for('auth.login_google') }}" class="btn btn-outline-premium w-100">
+                        <i class="bi bi-google"></i> Entrar com Google
+                    </p>
+                </div>
+                
+                <hr>
+                
+                <div class="text-center">
+                    <p class="mb-0">Não tem uma conta? 
+                        <a href="{{ url_for('auth.registro') }}" class="text-warning text-decoration-none">
+                            Cadastre-se aqui
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

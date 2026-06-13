@@ -1,0 +1,157 @@
+{# app/templates/admin/dashboard.html #} {% extends "base.html" %} {% block
+content %}
+<div class="container-fluid mt-5 pt-4">
+  <div class="row">
+    <div class="col-md-3 col-lg-2 mb-4">
+      <div class="card-premium p-3">
+        <div class="text-center">
+          <i class="bi bi-gem fs-1 text-warning"></i>
+          <h5 class="mt-2">Menu Admin</h5>
+          <hr />
+          <a
+            href="{{ url_for('admin.dashboard') }}"
+            class="btn btn-outline-premium w-100 mb-2"
+          >
+            <i class="bi bi-speedometer2"></i> Dashboard
+          </a>
+          <a
+            href="{{ url_for('admin.agendamentos') }}"
+            class="btn btn-outline-premium w-100 mb-2"
+          >
+            <i class="bi bi-calendar"></i> Agendamentos
+          </a>
+          <a
+            href="{{ url_for('admin.clientes') }}"
+            class="btn btn-outline-premium w-100"
+          >
+            <i class="bi bi-people"></i> Clientes
+          </a>
+          <a
+            href="{{ url_for('depoimentos.admin_pendentes') }}"
+            class="btn btn-premium w-100"
+          >
+            <i class="bi bi-chat-dots"></i> Depoimentos {% set pendentes_count =
+            namespace(value=0) %} {# Você pode adicionar um contador aqui #}
+            <span class="badge bg-warning text-dark" id="pendentesCount"
+              >0</span
+            >
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-9 col-lg-10">
+      <div class="card-premium p-4">
+        <h3 class="mb-4">Dashboard Administrativo</h3>
+
+        <!-- Cards de estatísticas -->
+        <div class="row g-4 mb-4">
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="bg-light rounded p-3 text-center">
+              <i class="bi bi-people fs-2 text-warning"></i>
+              <h3 class="mt-2">{{ total_clientes }}</h3>
+              <p class="mb-0 text-muted">Total de Clientes</p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="bg-light rounded p-3 text-center">
+              <i class="bi bi-calendar fs-2 text-warning"></i>
+              <h3 class="mt-2">{{ total_agendamentos }}</h3>
+              <p class="mb-0 text-muted">Total Agendamentos</p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="bg-light rounded p-3 text-center">
+              <i class="bi bi-today fs-2 text-warning"></i>
+              <h3 class="mt-2">{{ agendamentos_hoje }}</h3>
+              <p class="mb-0 text-muted">Agendamentos Hoje</p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="bg-light rounded p-3 text-center">
+              <i class="bi bi-calendar-week fs-2 text-warning"></i>
+              <h3 class="mt-2">{{ agendamentos_semana }}</h3>
+              <p class="mb-0 text-muted">Esta Semana</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cards de status -->
+        <div class="row g-4 mb-4">
+          <div class="col-md-4">
+            <div
+              class="bg-warning bg-opacity-25 rounded p-3 text-center border border-warning"
+            >
+              <i class="bi bi-clock-history fs-2"></i>
+              <h5 class="mt-2">Pendentes</h5>
+              <h3 class="mb-0">{{ pendentes }}</h3>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div
+              class="bg-success bg-opacity-25 rounded p-3 text-center border border-success"
+            >
+              <i class="bi bi-check-circle fs-2"></i>
+              <h5 class="mt-2">Confirmados</h5>
+              <h3 class="mb-0">{{ confirmados }}</h3>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div
+              class="bg-danger bg-opacity-25 rounded p-3 text-center border border-danger"
+            >
+              <i class="bi bi-x-circle fs-2"></i>
+              <h5 class="mt-2">Cancelados</h5>
+              <h3 class="mb-0">{{ cancelados }}</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Agendamentos recentes -->
+        <h4 class="mb-3">Últimos Agendamentos</h4>
+        {% if agendamentos_recentes %}
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead class="table-light">
+              <tr>
+                <th>Cliente</th>
+                <th>Serviço</th>
+                <th>Data</th>
+                <th>Horário</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for ag in agendamentos_recentes %}
+              <tr>
+                <td>{{ ag.usuario.nome }}</td>
+                <td>{{ ag.servico_display }}</td>
+                <td>{{ ag.data.strftime('%d/%m/%Y') }}</td>
+                <td>{{ ag.horario.strftime('%H:%M') }}</td>
+                <td>
+                  {% if ag.status == 'PENDENTE' %}
+                  <span class="badge bg-warning text-dark">Pendente</span>
+                  {% elif ag.status == 'CONFIRMADO' %}
+                  <span class="badge bg-success">Confirmado</span>
+                  {% elif ag.status == 'CONCLUIDO' %}
+                  <span class="badge bg-info">Concluído</span>
+                  {% else %}
+                  <span class="badge bg-danger">Cancelado</span>
+                  {% endif %}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        {% else %}
+        <div class="text-center py-5 bg-light rounded">
+          <i class="bi bi-inbox fs-1 text-muted"></i>
+          <p class="mt-3 mb-0">Nenhum agendamento encontrado.</p>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Massoterapia Residencial</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#f8f5f2;
+      color:#333;
+      overflow-x:hidden;
+    }
+
+    /* HERO */
+
+    header{
+      width:100%;
+      min-height:100vh;
+
+      background:
+      linear-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0.60)),
+      url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1600&auto=format&fit=crop');
+
+      background-size:cover;
+      background-position:center;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+
+      padding:20px;
+    }
+
+    .hero{
+      max-width:900px;
+      color:white;
+    }
+
+    .hero h1{
+      font-size:65px;
+      line-height:1.1;
+      margin-bottom:25px;
+    }
+
+    .hero p{
+      font-size:20px;
+      line-height:1.8;
+      margin-bottom:40px;
+      color:#f1f1f1;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:18px 42px;
+      background:#b57b57;
+      color:white;
+      text-decoration:none;
+      border-radius:50px;
+      font-weight:600;
+      transition:0.3s;
+      box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .btn:hover{
+      background:#9e6545;
+      transform:translateY(-4px);
+    }
+
+    section{
+      padding:90px 8%;
+    }
+
+    .title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .title h2{
+      font-size:45px;
+      color:#222;
+      margin-bottom:10px;
+    }
+
+    .title p{
+      color:#777;
+      font-size:18px;
+    }
+
+    /* SOBRE */
+
+    .about{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:center;
+    }
+
+    .about img{
+      width:100%;
+      border-radius:30px;
+      box-shadow:0 15px 40px rgba(0,0,0,0.1);
+    }
+
+    .about-text h2{
+      font-size:45px;
+      margin-bottom:20px;
+    }
+
+    .about-text p{
+      color:#666;
+      line-height:1.9;
+      margin-bottom:20px;
+      font-size:17px;
+    }
+
+    /* SERVIÇOS */
+
+    .services{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:white;
+      border-radius:25px;
+      padding:35px;
+      transition:0.4s;
+      box-shadow:0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+    }
+
+    .card h3{
+      color:#b57b57;
+      margin-bottom:15px;
+      font-size:25px;
+    }
+
+    .card p{
+      color:#666;
+      line-height:1.8;
+    }
+
+    /* BENEFÍCIOS */
+
+    .benefits{
+      background:white;
+    }
+
+    .benefit-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .benefit{
+      background:#f8f5f2;
+      border-radius:25px;
+      padding:35px;
+      text-align:center;
+    }
+
+    .benefit h4{
+      color:#b57b57;
+      margin-bottom:15px;
+      font-size:22px;
+    }
+
+    .benefit p{
+      color:#666;
+      line-height:1.7;
+    }
+
+    /* GALERIA */
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+      gap:20px;
+    }
+
+    .gallery img{
+      width:100%;
+      height:300px;
+      object-fit:cover;
+      border-radius:25px;
+      transition:0.4s;
+    }
+
+    .gallery img:hover{
+      transform:scale(1.03);
+    }
+
+    /* DEPOIMENTOS */
+
+    .testimonials{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
+      gap:30px;
+    }
+
+    .testimonial{
+      background:white;
+      padding:35px;
+      border-radius:25px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.05);
+    }
+
+    .testimonial p{
+      color:#666;
+      line-height:1.8;
+      margin-bottom:20px;
+    }
+
+    .testimonial h4{
+      color:#b57b57;
+    }
+
+    /* CTA */
+
+    .cta{
+      margin:80px 8%;
+      border-radius:30px;
+      padding:90px 30px;
+
+      background:
+      linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+      url('https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=1600&auto=format&fit=crop');
+
+      background-size:cover;
+      background-position:center;
+
+      text-align:center;
+      color:white;
+    }
+
+    .cta h2{
+      font-size:52px;
+      margin-bottom:20px;
+    }
+
+    .cta p{
+      font-size:19px;
+      color:#eee;
+      margin-bottom:35px;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#1f1f1f;
+      color:#ccc;
+      text-align:center;
+      padding:35px 20px;
+    }
+
+    footer p{
+      margin:8px 0;
+    }
+
+    /* RESPONSIVO */
+
+    @media(max-width:900px){
+
+      .hero h1{
+        font-size:42px;
+      }
+
+      .about{
+        grid-template-columns:1fr;
+      }
+
+      .about-text h2{
+        font-size:35px;
+      }
+
+      .cta h2{
+        font-size:38px;
+      }
+
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <!-- HERO -->
+
+  <header>
+
+    <div class="hero">
+
+      <h1>
+        Massoterapia e Ventosaterapia no Conforto da Sua Casa
+      </h1>
+
+      <p>
+        Atendimento residencial profissional com técnicas terapêuticas
+        para aliviar dores musculares, reduzir o estresse,
+        promover relaxamento e melhorar sua qualidade de vida.
+      </p>
+
+      <a href="https://wa.me/5581999999999" class="btn">
+        Agendar Atendimento
+      </a>
+
+    </div>
+
+  </header>
+
+  <!-- SOBRE -->
+
+  <section class="about">
+
+    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1200&auto=format&fit=crop">
+
+    <div class="about-text">
+
+      <h2>
+        Atendimento Profissional na Sua Residência
+      </h2>
+
+      <p>
+        Levamos conforto, bem-estar e relaxamento até você,
+        realizando sessões terapêuticas diretamente no conforto da sua casa.
+      </p>
+
+      <p>
+        Trabalhamos com técnicas profissionais de massoterapia,
+        ventosaterapia, pedras quentes, ventosa deslizante
+        e relaxamento muscular.
+      </p>
+
+      <a href="#" class="btn">
+        Conhecer Serviços
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- SERVIÇOS -->
+
+  <section>
+
+    <div class="title">
+
+      <h2>Nossos Serviços</h2>
+
+      <p>
+        Técnicas terapêuticas especializadas para seu bem-estar
+      </p>
+
+    </div>
+
+    <div class="services">
+
+      <div class="card">
+
+        <h3>Ventosaterapia</h3>
+
+        <p>
+          Técnica terapêutica que auxilia na circulação sanguínea,
+          relaxamento muscular e redução de dores.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Ventosa Deslizante</h3>
+
+        <p>
+          Técnica realizada com movimentos deslizantes das ventosas,
+          ajudando no alívio das tensões musculares e circulação corporal.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Massagem Relaxante</h3>
+
+        <p>
+          Ideal para aliviar o estresse diário,
+          proporcionando conforto físico e mental.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Massagem com Pedras Quentes</h3>
+
+        <p>
+          Técnica relaxante feita com pedras aquecidas,
+          promovendo equilíbrio energético e profundo relaxamento.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Liberação Muscular</h3>
+
+        <p>
+          Tratamento focado em dores musculares,
+          tensões localizadas e recuperação física.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Atendimento Residencial</h3>
+
+        <p>
+          Todo atendimento é realizado na residência do cliente,
+          proporcionando comodidade, conforto e praticidade.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- BENEFÍCIOS -->
+
+  <section class="benefits">
+
+    <div class="title">
+
+      <h2>Benefícios</h2>
+
+      <p>
+        Veja como os tratamentos podem ajudar você
+      </p>
+
+    </div>
+
+    <div class="benefit-grid">
+
+      <div class="benefit">
+
+        <h4>Relaxamento</h4>
+
+        <p>
+          Mais tranquilidade e redução do estresse diário.
+        </p>
+
+      </div>
+
+      <div class="benefit">
+
+        <h4>Alívio das Dores</h4>
+
+        <p>
+          Auxilia no tratamento de tensões e dores musculares.
+        </p>
+
+      </div>
+
+      <div class="benefit">
+
+        <h4>Melhor Circulação</h4>
+
+        <p>
+          Estimula a circulação sanguínea e recuperação muscular.
+        </p>
+
+      </div>
+
+      <div class="benefit">
+
+        <h4>Qualidade de Vida</h4>
+
+        <p>
+          Mais disposição física e equilíbrio corporal.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- GALERIA -->
+
+  <section>
+
+    <div class="title">
+
+      <h2>Nosso Atendimento</h2>
+
+      <p>
+        Conforto, relaxamento e profissionalismo
+      </p>
+
+    </div>
+
+    <div class="gallery">
+
+      <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1200&auto=format&fit=crop">
+
+      <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=1200&auto=format&fit=crop">
+
+      <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1200&auto=format&fit=crop">
+
+      <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=1200&auto=format&fit=crop">
+
+    </div>
+
+  </section>
+
+  <!-- DEPOIMENTOS -->
+
+  <section>
+
+    <div class="title">
+
+      <h2>Depoimentos</h2>
+
+      <p>
+        Veja o que nossos clientes dizem
+      </p>
+
+    </div>
+
+    <div class="testimonials">
+
+      <div class="testimonial">
+
+        <p>
+          “Excelente atendimento. Muito confortável poder receber
+          a sessão em casa.”
+        </p>
+
+        <h4>— Cliente</h4>
+
+      </div>
+
+      <div class="testimonial">
+
+        <p>
+          “A massagem com pedras quentes foi incrível.
+          Atendimento super profissional.”
+        </p>
+
+        <h4>— Cliente</h4>
+
+      </div>
+
+      <div class="testimonial">
+
+        <p>
+          “A ventosa deslizante ajudou bastante nas dores musculares.
+          Recomendo muito.”
+        </p>
+
+        <h4>— Cliente</h4>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+
+  <div class="cta">
+
+    <h2>
+      Agende Seu Atendimento em Casa
+    </h2>
+
+    <p>
+      Relaxamento, conforto e bem-estar sem sair da sua residência.
+    </p>
+
+    <a href="https://wa.me/5581999999999" class="btn">
+      Falar no WhatsApp
+    </a>
+
+  </div>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <p>
+      <strong>Massoterapia & Ventosaterapia Residencial</strong>
+    </p>
+
+    <p>
+      Atendimento em domicílio • Recife - Pernambuco
+    </p>
+
+    <p>
+      © 2026 Todos os direitos reservados
+    </p>
+
+  </footer>
+
+</body>
+</html>
