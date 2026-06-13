@@ -33,7 +33,7 @@ content %}
             <i class="bi bi-chat-dots"></i> Depoimentos {% set pendentes_count =
             namespace(value=0) %} {# Você pode adicionar um contador aqui #}
             <span class="badge bg-warning text-dark" id="pendentesCount"
-              >0</span
+              >{{ depoimentos_pendentes|length }}</span
             >
           </a>
         </div>

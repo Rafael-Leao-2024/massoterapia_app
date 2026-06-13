@@ -2,6 +2,7 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request, jsonify
 from flask_login import login_required, current_user
 from app import db
+from app.models.depoimento import Depoimento
 from app.models.user import User
 from app.models.agendamento import Agendamento
 from datetime import datetime, timedelta
@@ -44,6 +45,7 @@ def dashboard():
         pendentes = Agendamento.query.filter_by(status='PENDENTE').count()
         confirmados = Agendamento.query.filter_by(status='CONFIRMADO').count()
         cancelados = Agendamento.query.filter_by(status='CANCELADO').count()
+        depoimentos_pendentes = Depoimento.query.filter_by(status="PENDENTE").all()
         
         # Agendamentos recentes
         agendamentos_recentes = Agendamento.query.order_by(
@@ -59,7 +61,8 @@ def dashboard():
                              pendentes=pendentes,
                              confirmados=confirmados,
                              cancelados=cancelados,
-                             agendamentos_recentes=agendamentos_recentes)
+                             agendamentos_recentes=agendamentos_recentes,
+                             depoimentos_pendentes=depoimentos_pendentes)
     except Exception as e:
         print(f"Erro no dashboard: {e}")
         flash('Erro ao carregar o dashboard.', 'danger')

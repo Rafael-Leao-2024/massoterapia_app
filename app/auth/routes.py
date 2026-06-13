@@ -87,7 +87,7 @@ def login_google():
     redirect_uri = url_for('auth.google_callback', _external=True)
     return google.authorize_redirect(redirect_uri)
 
-@auth_bp.route('/google-callback')
+@auth_bp.route('/google-callback', methods=['GET', 'POST'])
 def google_callback():
     token = google.authorize_access_token()  # Debug: Verificar o token recebido
     user_info = google.userinfo()  # Debug: Verificar as informações do usuário retornadas
