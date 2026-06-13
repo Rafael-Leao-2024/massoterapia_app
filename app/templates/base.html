@@ -1,354 +1,413 @@
 {# app/templates/base.html #}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
     <title>{% block title %}Joyce Almeida - Massoterapeuta{% endblock %}</title>
-    
+
     <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+    />
     <!-- AOS Animation -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
     <style>
-        :root {
-            --vinho-escuro: #32040A;
-            --vinho: #4D0811;
-            --vinho-claro: #6D0F1B;
-            --dourado: #D7B17A;
-            --dourado-suave: #C8A06A;
-            --creme: #F5E6D0;
+      :root {
+        --vinho-escuro: #32040a;
+        --vinho: #4d0811;
+        --vinho-claro: #6d0f1b;
+        --dourado: #d7b17a;
+        --dourado-suave: #c8a06a;
+        --creme: #f5e6d0;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--creme);
+        color: var(--vinho-escuro);
+      }
+
+      /* Navbar Premium */
+      .navbar-premium {
+        background: linear-gradient(
+          135deg,
+          var(--vinho-escuro) 0%,
+          var(--vinho) 100%
+        );
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .navbar-premium .navbar-brand,
+      .navbar-premium .nav-link {
+        color: var(--creme) !important;
+        transition: all 0.3s ease;
+      }
+
+      .navbar-premium .nav-link:hover {
+        color: var(--dourado) !important;
+        transform: translateY(-2px);
+      }
+
+      /* Botões Premium */
+      .btn-premium {
+        background: linear-gradient(
+          135deg,
+          var(--dourado) 0%,
+          var(--dourado-suave) 100%
+        );
+        color: var(--vinho-escuro);
+        border: none;
+        padding: 12px 30px;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(215, 177, 122, 0.3);
+      }
+
+      .btn-premium:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(215, 177, 122, 0.4);
+        color: var(--vinho-escuro);
+      }
+
+      .btn-outline-premium {
+        border: 2px solid var(--dourado);
+        color: var(--dourado);
+        background: transparent;
+        padding: 10px 25px;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .btn-outline-premium:hover {
+        background: var(--dourado);
+        color: var(--vinho-escuro);
+        transform: translateY(-2px);
+      }
+
+      /* Cards Premium */
+      .card-premium {
+        background: white;
+        border-radius: 20px;
+        border: none;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        overflow: hidden;
+      }
+
+      .card-premium:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Seções */
+      .section-title {
+        position: relative;
+        margin-bottom: 3rem;
+        text-align: center;
+        color: var(--vinho-escuro);
+      }
+
+      .section-title:after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--dourado),
+          var(--dourado-suave)
+        );
+      }
+
+      /* Hero Section */
+      .hero {
+        background:
+          linear-gradient(
+            135deg,
+            rgba(50, 4, 10, 0.95) 0%,
+            rgba(77, 8, 17, 0.9) 100%
+          ),
+          url("https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3");
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        color: var(--creme);
+      }
+
+      /* WhatsApp Button */
+      .whatsapp-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: #25d366;
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        text-decoration: none;
+      }
+
+      .whatsapp-btn:hover {
+        transform: scale(1.1);
+        color: white;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Responsividade */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2rem;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--creme);
-            color: var(--vinho-escuro);
-        }
-        
-        /* Navbar Premium */
-        .navbar-premium {
-            background: linear-gradient(135deg, var(--vinho-escuro) 0%, var(--vinho) 100%);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .navbar-premium .navbar-brand,
-        .navbar-premium .nav-link {
-            color: var(--creme) !important;
-            transition: all 0.3s ease;
-        }
-        
-        .navbar-premium .nav-link:hover {
-            color: var(--dourado) !important;
-            transform: translateY(-2px);
-        }
-        
-        /* Botões Premium */
-        .btn-premium {
-            background: linear-gradient(135deg, var(--dourado) 0%, var(--dourado-suave) 100%);
-            color: var(--vinho-escuro);
-            border: none;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(215, 177, 122, 0.3);
-        }
-        
-        .btn-premium:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(215, 177, 122, 0.4);
-            color: var(--vinho-escuro);
-        }
-        
-        .btn-outline-premium {
-            border: 2px solid var(--dourado);
-            color: var(--dourado);
-            background: transparent;
-            padding: 10px 25px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-outline-premium:hover {
-            background: var(--dourado);
-            color: var(--vinho-escuro);
-            transform: translateY(-2px);
-        }
-        
-        /* Cards Premium */
-        .card-premium {
-            background: white;
-            border-radius: 20px;
-            border: none;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-        
-        .card-premium:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-        
-        /* Seções */
-        .section-title {
-            position: relative;
-            margin-bottom: 3rem;
-            text-align: center;
-            color: var(--vinho-escuro);
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--dourado), var(--dourado-suave));
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, rgba(50,4,10,0.95) 0%, rgba(77,8,17,0.9) 100%), url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3');
-            background-size: cover;
-            background-position: center;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            color: var(--creme);
-        }
-        
-        /* WhatsApp Button */
+
         .whatsapp-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25D366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            text-decoration: none;
+          width: 50px;
+          height: 50px;
+          font-size: 25px;
+          bottom: 20px;
+          right: 20px;
         }
-        
-        .whatsapp-btn:hover {
-            transform: scale(1.1);
-            color: white;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      }
+
+      /* Animações */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
         }
-        
-        /* Responsividade */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .whatsapp-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 25px;
-                bottom: 20px;
-                right: 20px;
-            }
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
-        
-        /* Animações */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .fade-in-up {
-            animation: fadeInUp 0.6s ease-out;
-        }
-        
-        /* Footer */
-        .footer-premium {
-            background: linear-gradient(135deg, var(--vinho-escuro) 0%, var(--vinho) 100%);
-            color: var(--creme);
-            padding: 3rem 0 1rem 0;
-        }
-        
-        /* Forms */
-        .form-premium {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        
-        .form-premium input,
-        .form-premium select,
-        .form-premium textarea {
-            border-radius: 10px;
-            border: 1px solid #ddd;
-            padding: 12px;
-            transition: all 0.3s ease;
-        }
-        
-        .form-premium input:focus,
-        .form-premium select:focus,
-        .form-premium textarea:focus {
-            border-color: var(--dourado);
-            box-shadow: 0 0 0 0.2rem rgba(215, 177, 122, 0.25);
-        }
+      }
+
+      .fade-in-up {
+        animation: fadeInUp 0.6s ease-out;
+      }
+
+      /* Footer */
+      .footer-premium {
+        background: linear-gradient(
+          135deg,
+          var(--vinho-escuro) 0%,
+          var(--vinho) 100%
+        );
+        color: var(--creme);
+        padding: 3rem 0 1rem 0;
+      }
+
+      /* Forms */
+      .form-premium {
+        background: white;
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-premium input,
+      .form-premium select,
+      .form-premium textarea {
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        padding: 12px;
+        transition: all 0.3s ease;
+      }
+
+      .form-premium input:focus,
+      .form-premium select:focus,
+      .form-premium textarea:focus {
+        border-color: var(--dourado);
+        box-shadow: 0 0 0 0.2rem rgba(215, 177, 122, 0.25);
+      }
     </style>
-    
+
     {% block extra_css %}{% endblock %}
-</head>
-<body>
+  </head>
+  <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-premium fixed-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="{{ url_for('main.landing') }}">
-                <i class="bi bi-flower2 me-2"></i>
-                Joyce Almeida
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('main.landing') }}#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('main.landing') }}#sobre">Sobre</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('main.landing') }}#servicos">Serviços</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('main.landing') }}#beneficios">Benefícios</a>
-                    </li>
-                    {% if current_user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('cliente.painel') }}">
-                                <i class="bi bi-person-circle"></i> Painel
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('auth.logout') }}">
-                                <i class="bi bi-box-arrow-right"></i> Sair
-                            </a>
-                        </li>
-                    {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('auth.login') }}">
-                                <i class="bi bi-box-arrow-in-right"></i> Entrar
-                            </a>
-                        </li>
-                    {% endif %}
-                </ul>
-            </div>
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="{{ url_for('main.landing') }}">
+          <i class="bi bi-flower2 me-2"></i>
+          Joyce Almeida
+        </a>
+        <button
+          class="navbar-toggler border-white"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <i class="bi bi-list text-white fs-2"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('main.landing') }}#home"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('main.landing') }}#sobre"
+                >Sobre</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('main.landing') }}#servicos"
+                >Serviços</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="{{ url_for('main.landing') }}#beneficios"
+                >Benefícios</a
+              >
+            </li>
+            {% if current_user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('cliente.painel') }}">
+                <i class="bi bi-person-circle"></i> Painel
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('auth.logout') }}">
+                <i class="bi bi-box-arrow-right"></i> Sair
+              </a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('auth.login') }}">
+                <i class="bi bi-box-arrow-in-right"></i> Entrar
+              </a>
+            </li>
+            {% endif %}
+          </ul>
         </div>
+      </div>
     </nav>
-    
+
     <!-- Flash Messages -->
     <div class="container mt-5 pt-4">
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ category if category != 'message' else 'info' }} alert-dismissible fade show mt-3" role="alert">
-                        {{ message }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    </div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %}
+      <div
+        class="alert alert-{{ category if category != 'message' else 'info' }} alert-dismissible fade show mt-3"
+        role="alert"
+      >
+        {{ message }}
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+        ></button>
+      </div>
+      {% endfor %} {% endif %} {% endwith %}
     </div>
-    
+
     <!-- Main Content -->
-    <main>
-        {% block content %}{% endblock %}
-    </main>
-    
+    <main>{% block content %}{% endblock %}</main>
+
     <!-- Footer -->
     <footer class="footer-premium mt-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5 class="mb-3">Joyce Almeida</h5>
-                    <p>Massoterapeuta profissional especializada em técnicas terapêuticas e relaxamento.</p>
-                    <div class="mt-3">
-                        <i class="bi bi-instagram me-3 fs-4"></i>
-                        <i class="bi bi-facebook me-3 fs-4"></i>
-                        <i class="bi bi-whatsapp fs-4"></i>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h5 class="mb-3">Contato</h5>
-                    <p><i class="bi bi-telephone"></i> (81) 98422-3859</p>
-                    <p><i class="bi bi-envelope"></i> contato@joycealmeida.com</p>
-                    <p><i class="bi bi-geo-alt"></i> Atendimento residencial - Recife/PE</p>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h5 class="mb-3">Horário de Atendimento</h5>
-                    <p>Segunda a Sexta: 09h às 18h</p>
-                    <p>Sábado: 09h às 14h</p>
-                    <p>Domingo: Fechado</p>
-                </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <h5 class="mb-3">Joyce Almeida</h5>
+            <p>
+              Massoterapeuta profissional especializada em técnicas terapêuticas
+              e relaxamento.
+            </p>
+            <div class="mt-3">
+              <i class="bi bi-instagram me-3 fs-4"></i>
+              <i class="bi bi-facebook me-3 fs-4"></i>
+              <i class="bi bi-whatsapp fs-4"></i>
             </div>
-            <hr class="bg-light">
-            <div class="text-center">
-                <p class="mb-0">&copy; 2024 Joyce Almeida Massoterapeuta. Todos os direitos reservados.</p>
-            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <h5 class="mb-3">Contato</h5>
+            <p><i class="bi bi-telephone"></i> (81) 98422-3859</p>
+            <p><i class="bi bi-envelope"></i> contato@joycealmeida.com</p>
+            <p>
+              <i class="bi bi-geo-alt"></i> Atendimento residencial - Recife/PE
+            </p>
+          </div>
+          <div class="col-md-4 mb-4">
+            <h5 class="mb-3">Horário de Atendimento</h5>
+            <p>Segunda a Sexta: 09h às 18h</p>
+            <p>Sábado: 09h às 14h</p>
+            <p>Domingo: Fechado</p>
+          </div>
         </div>
+        <hr class="bg-light" />
+        <div class="text-center">
+          <p class="mb-0">
+            &copy; 2024 Joyce Almeida Massoterapeuta. Todos os direitos
+            reservados.
+          </p>
+        </div>
+      </div>
     </footer>
-    
+
     <!-- WhatsApp Button -->
-    <a href="https://wa.me/5581984223859?text=Olá%20Joyce,%20gostaria%20de%20agendar%20um%20atendimento." 
-       class="whatsapp-btn" target="_blank">
-        <i class="bi bi-whatsapp"></i>
+    <a
+      href="https://wa.me/5581984223859?text=Olá%20Joyce,%20gostaria%20de%20agendar%20um%20atendimento."
+      class="whatsapp-btn"
+      target="_blank"
+    >
+      <i class="bi bi-whatsapp"></i>
     </a>
-    
+
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 1000,
-            once: true
+      AOS.init({
+        duration: 1000,
+        once: true,
+      });
+
+      // Smooth scroll para ancoras
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth" });
+          }
         });
-        
-        // Smooth scroll para ancoras
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
+      });
     </script>
     {% block extra_js %}{% endblock %}
-</body>
+  </body>
 </html>
