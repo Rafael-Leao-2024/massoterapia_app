@@ -46,5 +46,5 @@ def splash():
 
 @main_bp.route('/landing-system')
 def landing_system():
-    # Sua landing page original aqui
+    # Sua landing page original     
     return redirect(url_for('main.landing'))
