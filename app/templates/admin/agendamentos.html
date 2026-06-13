@@ -74,8 +74,8 @@
                         <tbody>
                             {% for agendamento in agendamentos %}
                             <tr>
-                                <td>{{ agendamento.usuario.nome }}</td>
-                                <td>{{ agendamento.servico_display }}</td>
+                                <td>{{ agendamento.usuario.nome.title().split()[0] }}</td>
+                                <td>{{ agendamento.servico_display.lower().replace('_', ' ') }}</td>
                                 <td>{{ agendamento.data.strftime('%d/%m/%Y') }}</td>
                                 <td>{{ agendamento.horario.strftime('%H:%M') }}</td>
                                 <td>

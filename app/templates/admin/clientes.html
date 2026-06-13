@@ -44,7 +44,7 @@
                             {% for cliente in clientes %}
                             <tr>
                                 <td>{{ cliente.id }}</td>
-                                <td>{{ cliente.nome }}</td>
+                                <td>{{ cliente.nome.title().split()[0] }}</td>
                                 <td>{{ cliente.email }}</td>
                                 <td>{{ cliente.telefone or '-' }}</td>
                                 <td>{{ cliente.cpf or '-' }}</td>

@@ -1,494 +1,585 @@
-{# app/templates/main/landing.html #}
-{% extends "base.html" %}
-
-{% block content %}
+{# app/templates/main/landing.html #} {% extends "base.html" %} {% block content
+%}
 <!-- Hero Section -->
 <section id="home" class="hero">
-    <div class="container">
-        <div class="row min-vh-100 align-items-center">
-            <div class="col-lg-7 text-center text-lg-start" data-aos="fade-right">
-                <h1 class="display-3 fw-bold mb-3">Joyce Almeida</h1>
-                <h2 class="display-6 mb-4">Massoterapeuta</h2>
-                <p class="lead mb-4">Atendimento residencial personalizado para seu bem-estar físico e mental</p>
-                <a href="{{ url_for('auth.registro') }}" class="btn btn-premium btn-lg">
-                    <i class="bi bi-calendar-check"></i> Agendar Agora
-                </a>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row min-vh-100 align-items-center">
+      <div class="col-lg-7 text-center text-lg-start" data-aos="fade-right">
+        <h1 class="display-3 fw-bold mb-3">Joyce Almeida</h1>
+        <h2 class="display-6 mb-4">Massoterapeuta</h2>
+        <p class="lead mb-4">
+          Atendimento residencial personalizado para seu bem-estar físico e
+          mental
+        </p>
+        <a href="{{ url_for('auth.registro') }}" class="btn btn-premium btn-lg">
+          <i class="bi bi-calendar-check"></i> Agendar Agora
+        </a>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- Sobre Section com mais imagens -->
 <section id="sobre" class="py-5">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 mb-4" data-aos="fade-right">
-                <div class="position-relative">
-                    <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1200&auto=format&fit=crop" 
-                         alt="Joyce Almeida" class="img-fluid rounded-4 shadow-lg">
-                    <div class="position-absolute bottom-0 end-0 bg-warning rounded-circle p-3 m-3 shadow">
-                        <i class="bi bi-heart-fill text-white fs-2"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6" data-aos="fade-left">
-                <h2 class="section-title text-start">Sobre Joyce</h2>
-                <p class="lead">Com mais de 8 anos de experiência, sou especialista em técnicas terapêuticas que promovem bem-estar e qualidade de vida.</p>
-                <p>Minha abordagem combina conhecimentos da massoterapia tradicional com técnicas modernas para oferecer resultados excepcionais a cada cliente.</p>
-                <div class="mt-4">
-                    <div class="d-flex align-items-center mb-3">
-                        <i class="bi bi-check-circle-fill text-warning fs-4 me-3"></i>
-                        <span>Formada em Massoterapia pelo Instituto Brasileiro de Terapias</span>
-                    </div>
-                    <div class="d-flex align-items-center mb-3">
-                        <i class="bi bi-check-circle-fill text-warning fs-4 me-3"></i>
-                        <span>Especialista em Ventosaterapia Terapêutica</span>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <i class="bi bi-check-circle-fill text-warning fs-4 me-3"></i>
-                        <span>Certificada em Massagem Relaxante e Liberação Miofascial</span>
-                    </div>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-4" data-aos="fade-right">
+        <div class="position-relative">
+          <img
+            src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1200&auto=format&fit=crop"
+            alt="Joyce Almeida"
+            class="img-fluid rounded-4 shadow-lg"
+          />
+          <div
+            class="position-absolute bottom-0 end-0 bg-warning rounded-circle p-3 m-3 shadow"
+          >
+            <i class="bi bi-heart-fill text-white fs-2"></i>
+          </div>
         </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <h2 class="section-title text-start">Sobre Joyce</h2>
+        <p class="lead">
+          Meu compromisso é proporcionar momentos de relaxamento, equilíbrio e
+          bem-estar por meio de técnicas terapêuticas aplicadas com atenção e
+          cuidado.
+        </p>
+
+        <p>
+          Cada atendimento é realizado de forma personalizada, respeitando as
+          necessidades individuais de cada cliente. O foco é auxiliar no alívio
+          de tensões, na redução do estresse e na promoção de mais qualidade de
+          vida para o corpo e a mente.
+        </p>
+        <div class="mt-4">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-check-circle-fill text-warning fs-4 me-3"></i>
+            <span
+              >Formada em Massoterapia pelo Instituto Brasileiro de
+              Terapias</span
+            >
+          </div>
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-check-circle-fill text-warning fs-4 me-3"></i>
+            <span>Especialista em Ventosaterapia Terapêutica</span>
+          </div>
+          <div class="d-flex align-items-center">
+            <i class="bi bi-check-circle-fill text-warning fs-4 me-3"></i>
+            <span
+              >Certificada em Massagem Relaxante e Liberação Miofascial</span
+            >
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- Galeria de imagens antes dos serviços -->
 <section class="py-3">
-    <div class="container">
-        <div class="row g-3">
-            <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="100">
-                <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=800&auto=format&fit=crop" 
-                     class="img-fluid rounded-4 shadow-sm" alt="Massagem relaxante" style="height: 200px; width: 100%; object-fit: cover;">
-            </div>
-            <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="200">
-                <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=800&auto=format&fit=crop" 
-                     class="img-fluid rounded-4 shadow-sm" alt="Ventosaterapia" style="height: 200px; width: 100%; object-fit: cover;">
-            </div>
-            <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300">
-                <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=800&auto=format&fit=crop" 
-                     class="img-fluid rounded-4 shadow-sm" alt="Pedras quentes" style="height: 200px; width: 100%; object-fit: cover;">
-            </div>
-            <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="400">
-                <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop" 
-                     class="img-fluid rounded-4 shadow-sm" alt="Atendimento residencial" style="height: 200px; width: 100%; object-fit: cover;">
-            </div>
-        </div>
+  <div class="container">
+    <div class="row g-3">
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="100">
+        <img
+          src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=800&auto=format&fit=crop"
+          class="img-fluid rounded-4 shadow-sm"
+          alt="Massagem relaxante"
+          style="height: 200px; width: 100%; object-fit: cover"
+        />
+      </div>
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="200">
+        <img
+          src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=800&auto=format&fit=crop"
+          class="img-fluid rounded-4 shadow-sm"
+          alt="Ventosaterapia"
+          style="height: 200px; width: 100%; object-fit: cover"
+        />
+      </div>
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300">
+        <img
+          src="{{ url_for('static', filename='imagens/pexels-karola-g-6629521.jpg') }}"
+          class="img-fluid rounded-4 shadow-sm"
+          alt="Pedras quentes"
+          style="height: 200px; width: 100%; object-fit: cover"
+        />
+      </div>
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="400">
+        <img
+          src="{{ url_for('static', filename='imagens/massagenerds-cupping-2852483.jpg') }}"
+          class="img-fluid rounded-4 shadow-sm"
+          alt="Atendimento residencial"
+          style="height: 200px; width: 100%; object-fit: cover"
+        />
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- Serviços Section com ícones variados -->
 <section id="servicos" class="py-5 bg-white">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Nossos Serviços</h2>
-        <div class="row g-4">
-            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="card-premium h-100 p-4">
-                    <i class="bi bi-flower1 fs-1 text-warning mb-3"></i>
-                    <h4>Massagem Relaxante</h4>
-                    <p class="text-muted">Técnica suave que promove relaxamento profundo e alívio do estresse.</p>
-                    <div class="d-flex justify-content-between align-items-center mt-3">
-                        <span class="fw-bold text-warning">60min</span>
-                        <span class="h5 mb-0">R$ 120</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="card-premium h-100 p-4">
-                    <i class="bi bi-cup-straw fs-1 text-warning mb-3"></i>
-                    <h4>Ventosaterapia</h4>
-                    <p class="text-muted">Terapia que utiliza ventosas para aliviar dores e tensões musculares.</p>
-                    <div class="d-flex justify-content-between align-items-center mt-3">
-                        <span class="fw-bold text-warning">45min</span>
-                        <span class="h5 mb-0">R$ 100</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="card-premium h-100 p-4">
-                    <i class="bi bi-arrow-repeat fs-1 text-warning mb-3"></i>
-                    <h4>Ventosa Deslizante</h4>
-                    <p class="text-muted">Técnica com movimentos deslizantes das ventosas para maior efetividade.</p>
-                    <div class="d-flex justify-content-between align-items-center mt-3">
-                        <span class="fw-bold text-warning">50min</span>
-                        <span class="h5 mb-0">R$ 130</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
-                <div class="card-premium h-100 p-4">
-                    <i class="bi bi-fire fs-1 text-warning mb-3"></i>
-                    <h4>Massagem com Pedras Quentes</h4>
-                    <p class="text-muted">Pedras aquecidas proporcionam relaxamento profundo e alívio muscular.</p>
-                    <div class="d-flex justify-content-between align-items-center mt-3">
-                        <span class="fw-bold text-warning">75min</span>
-                        <span class="h5 mb-0">R$ 160</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
-                <div class="card-premium h-100 p-4">
-                    <i class="bi bi-bandaid fs-1 text-warning mb-3"></i>
-                    <h4>Liberação Muscular</h4>
-                    <p class="text-muted">Técnica focada em pontos específicos para liberar tensões crônicas.</p>
-                    <div class="d-flex justify-content-between align-items-center mt-3">
-                        <span class="fw-bold text-warning">60min</span>
-                        <span class="h5 mb-0">R$ 140</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
-                <div class="card-premium h-100 p-4">
-                    <i class="bi bi-house-heart fs-1 text-warning mb-3"></i>
-                    <h4>Atendimento Residencial</h4>
-                    <p class="text-muted">Conforto e praticidade no atendimento na sua casa.</p>
-                    <div class="d-flex justify-content-between align-items-center mt-3">
-                        <span class="fw-bold text-warning">Variável</span>
-                        <span class="h5 mb-0">Consultar</span>
-                    </div>
-                </div>
-            </div>
+  <div class="container">
+    <h2 class="section-title" data-aos="fade-up">Nossos Serviços</h2>
+    <div class="row g-4">
+      {% for servico in servicos %}
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="card-premium h-100 p-4">
+          <i class="bi bi-{{ servico.icone }} fs-1 text-warning mb-3"></i>
+          <h4>{{ servico.nome }}</h4>
+          <p class="text-muted">{{ servico.descricao }}</p>
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <span class="fw-bold text-warning">{{ servico.duracao }}</span>
+            <span class="h5 mb-0">{{ servico.preco }}</span>
+          </div>
         </div>
+      </div>
+      {% endfor %}
     </div>
+  </div>
 </section>
 
 <!-- Benefícios Section com ícones variados -->
 <section id="beneficios" class="py-5">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Benefícios</h2>
-        <div class="row g-4">
-            <div class="col-sm-6 col-lg-3" data-aos="flip-left" data-aos-delay="100">
-                <div class="text-center">
-                    <div class="bg-white rounded-circle p-4 d-inline-block shadow-sm mb-3">
-                        <i class="bi bi-heart-pulse fs-1 text-warning"></i>
-                    </div>
-                    <h4>Alívio das dores</h4>
-                    <p class="text-muted">Redução significativa de dores musculares e tensões</p>
-                </div>
-            </div>
-            
-            <div class="col-sm-6 col-lg-3" data-aos="flip-left" data-aos-delay="200">
-                <div class="text-center">
-                    <div class="bg-white rounded-circle p-4 d-inline-block shadow-sm mb-3">
-                        <i class="bi bi-flower1 fs-1 text-warning"></i>
-                    </div>
-                    <h4>Relaxamento</h4>
-                    <p class="text-muted">Relaxamento profundo do corpo e mente</p>
-                </div>
-            </div>
-            
-            <div class="col-sm-6 col-lg-3" data-aos="flip-left" data-aos-delay="300">
-                <div class="text-center">
-                    <div class="bg-white rounded-circle p-4 d-inline-block shadow-sm mb-3">
-                        <i class="bi bi-cloud-sun fs-1 text-warning"></i>
-                    </div>
-                    <h4>Redução do estresse</h4>
-                    <p class="text-muted">Diminuição dos níveis de cortisol e ansiedade</p>
-                </div>
-            </div>
-            
-            <div class="col-sm-6 col-lg-3" data-aos="flip-left" data-aos-delay="400">
-                <div class="text-center">
-                    <div class="bg-white rounded-circle p-4 d-inline-block shadow-sm mb-3">
-                        <i class="bi bi-droplet fs-1 text-warning"></i>
-                    </div>
-                    <h4>Melhor circulação</h4>
-                    <p class="text-muted">Estimulação da circulação sanguínea</p>
-                </div>
-            </div>
+  <div class="container">
+    <h2 class="section-title" data-aos="fade-up">Benefícios</h2>
+    <div class="row g-4">
+      <div class="col-sm-6 col-lg-3" data-aos="flip-left" data-aos-delay="100">
+        <div class="text-center">
+          <div
+            class="bg-white rounded-circle p-4 d-inline-block shadow-sm mb-3"
+          >
+            <i class="bi bi-heart-pulse fs-1 text-warning"></i>
+          </div>
+          <h4>Alívio das dores</h4>
+          <p class="text-muted">
+            Redução significativa de dores musculares e tensões
+          </p>
         </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3" data-aos="flip-left" data-aos-delay="200">
+        <div class="text-center">
+          <div
+            class="bg-white rounded-circle p-4 d-inline-block shadow-sm mb-3"
+          >
+            <i class="bi bi-flower1 fs-1 text-warning"></i>
+          </div>
+          <h4>Relaxamento</h4>
+          <p class="text-muted">Relaxamento profundo do corpo e mente</p>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3" data-aos="flip-left" data-aos-delay="300">
+        <div class="text-center">
+          <div
+            class="bg-white rounded-circle p-4 d-inline-block shadow-sm mb-3"
+          >
+            <i class="bi bi-cloud-sun fs-1 text-warning"></i>
+          </div>
+          <h4>Redução do estresse</h4>
+          <p class="text-muted">
+            Diminuição dos níveis de cortisol e ansiedade
+          </p>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3" data-aos="flip-left" data-aos-delay="400">
+        <div class="text-center">
+          <div
+            class="bg-white rounded-circle p-4 d-inline-block shadow-sm mb-3"
+          >
+            <i class="bi bi-droplet fs-1 text-warning"></i>
+          </div>
+          <h4>Melhor circulação</h4>
+          <p class="text-muted">Estimulação da circulação sanguínea</p>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- Depoimentos Section -->
 <section id="depoimentos" class="py-5 bg-white">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">O que nossos clientes dizem</h2>
-        
-        <!-- Formulário para enviar depoimento -->
-        {% if current_user.is_authenticated and not current_user.admin %}
-        <div class="row justify-content-center mb-5" data-aos="fade-up">
-            <div class="col-md-8">
-                <div class="card-premium p-4" style="background: linear-gradient(135deg, var(--creme), white);">
-                    <h4 class="mb-3 text-center">Compartilhe sua experiência</h4>
-                    <form id="depoimentoForm">
-                        <div class="mb-3">
-                            <label class="form-label">Sua avaliação</label>
-                            <div class="rating-input">
-                                <i class="bi bi-star fs-2 rating-star" data-rating="1"></i>
-                                <i class="bi bi-star fs-2 rating-star" data-rating="2"></i>
-                                <i class="bi bi-star fs-2 rating-star" data-rating="3"></i>
-                                <i class="bi bi-star fs-2 rating-star" data-rating="4"></i>
-                                <i class="bi bi-star fs-2 rating-star" data-rating="5"></i>
-                                <input type="hidden" id="avaliacao" name="avaliacao" required>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="texto" class="form-label">Seu depoimento</label>
-                            <textarea class="form-control" id="texto" name="texto" rows="3" 
-                                      placeholder="Compartilhe sua experiência com nosso atendimento..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-premium w-100">
-                            <i class="bi bi-send"></i> Enviar Depoimento
-                        </button>
-                    </form>
-                    <div id="depoimentoMessage" class="mt-3"></div>
-                </div>
+  <div class="container">
+    <h2 class="section-title" data-aos="fade-up">
+      O que nossos clientes dizem
+    </h2>
+
+    <!-- Formulário para enviar depoimento -->
+    {% if current_user.is_authenticated and not current_user.admin %}
+    <div class="row justify-content-center mb-5" data-aos="fade-up">
+      <div class="col-md-8">
+        <div
+          class="card-premium p-4"
+          style="background: linear-gradient(135deg, var(--creme), white)"
+        >
+          <h4 class="mb-3 text-center">Compartilhe sua experiência</h4>
+          <form id="depoimentoForm">
+            <div class="mb-3">
+              <label class="form-label">Sua avaliação</label>
+              <div class="rating-input">
+                <i class="bi bi-star fs-2 rating-star" data-rating="1"></i>
+                <i class="bi bi-star fs-2 rating-star" data-rating="2"></i>
+                <i class="bi bi-star fs-2 rating-star" data-rating="3"></i>
+                <i class="bi bi-star fs-2 rating-star" data-rating="4"></i>
+                <i class="bi bi-star fs-2 rating-star" data-rating="5"></i>
+                <input type="hidden" id="avaliacao" name="avaliacao" required />
+              </div>
             </div>
-        </div>
-        {% elif not current_user.is_authenticated %}
-        <div class="row justify-content-center mb-5" data-aos="fade-up">
-            <div class="col-md-8">
-                <div class="card-premium p-4 text-center">
-                    <i class="bi bi-chat-heart fs-1 text-warning"></i>
-                    <h4 class="mt-3">Compartilhe sua experiência</h4>
-                    <p>Faça login para deixar seu depoimento sobre nossos serviços</p>
-                    <a href="{{ url_for('auth.login') }}" class="btn btn-outline-premium">
-                        <i class="bi bi-box-arrow-in-right"></i> Fazer Login
-                    </a>
-                </div>
+            <div class="mb-3">
+              <label for="texto" class="form-label">Seu depoimento</label>
+              <textarea
+                class="form-control"
+                id="texto"
+                name="texto"
+                rows="3"
+                placeholder="Compartilhe sua experiência com nosso atendimento..."
+                required
+              ></textarea>
             </div>
+            <button type="submit" class="btn btn-premium w-100">
+              <i class="bi bi-send"></i> Enviar Depoimento
+            </button>
+          </form>
+          <div id="depoimentoMessage" class="mt-3"></div>
         </div>
-        {% endif %}
-        
-        <!-- Lista de depoimentos aprovados -->
-        <div class="row g-4" id="depoimentosList">
-            <!-- Depoimentos serão carregados aqui via JavaScript -->
-        </div>
+      </div>
     </div>
+    {% elif not current_user.is_authenticated %}
+    <div class="row justify-content-center mb-5" data-aos="fade-up">
+      <div class="col-md-8">
+        <div class="card-premium p-4 text-center">
+          <i class="bi bi-chat-heart fs-1 text-warning"></i>
+          <h4 class="mt-3">Compartilhe sua experiência</h4>
+          <p>Faça login para deixar seu depoimento sobre nossos serviços</p>
+          <a href="{{ url_for('auth.login') }}" class="btn btn-outline-premium">
+            <i class="bi bi-box-arrow-in-right"></i> Fazer Login
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- Lista de depoimentos aprovados -->
+    <div class="row g-4" id="depoimentosList">
+      <!-- Depoimentos serão carregados aqui via JavaScript -->
+    </div>
+  </div>
 </section>
 
 <!-- Galeria de resultados -->
 <section class="py-5">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Galeria de Momentos</h2>
-        <div class="row g-4">
-            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
-                <div class="position-relative overflow-hidden rounded-4 shadow">
-                    <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=800&auto=format&fit=crop" 
-                         class="img-fluid w-100" style="height: 280px; object-fit: cover;" alt="Sessão de massagem">
-                    <div class="position-absolute bottom-0 start-0 end-0 bg-gradient-dark text-white p-3">
-                        <p class="mb-0 fw-bold">Sessão de Relaxamento</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
-                <div class="position-relative overflow-hidden rounded-4 shadow">
-                    <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop" 
-                         class="img-fluid w-100" style="height: 280px; object-fit: cover;" alt="Ventosaterapia">
-                    <div class="position-absolute bottom-0 start-0 end-0 bg-gradient-dark text-white p-3">
-                        <p class="mb-0 fw-bold">Ventosaterapia</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
-                <div class="position-relative overflow-hidden rounded-4 shadow">
-                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=800&auto=format&fit=crop" 
-                         class="img-fluid w-100" style="height: 280px; object-fit: cover;" alt="Pedras quentes">
-                    <div class="position-absolute bottom-0 start-0 end-0 bg-gradient-dark text-white p-3">
-                        <p class="mb-0 fw-bold">Pedras Quentes</p>
-                    </div>
-                </div>
-            </div>
+  <div class="container">
+    <h2 class="section-title" data-aos="fade-up">Galeria de Momentos</h2>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+        <div class="position-relative overflow-hidden rounded-4 shadow">
+          <img
+            src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=800&auto=format&fit=crop"
+            class="img-fluid w-100"
+            style="height: 280px; object-fit: cover"
+            alt="Sessão de massagem"
+          />
+          <div
+            class="position-absolute bottom-0 start-0 end-0 bg-gradient-dark text-white p-3"
+          >
+            <p class="mb-0 fw-bold">Sessão de Relaxamento</p>
+          </div>
         </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+        <div class="position-relative overflow-hidden rounded-4 shadow">
+          <img
+            src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop"
+            class="img-fluid w-100"
+            style="height: 280px; object-fit: cover"
+            alt="Ventosaterapia"
+          />
+          <div
+            class="position-absolute bottom-0 start-0 end-0 bg-gradient-dark text-white p-3"
+          >
+            <p class="mb-0 fw-bold">Ventosaterapia</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+        <div class="position-relative overflow-hidden rounded-4 shadow">
+          <img
+            src="{{ url_for('static', filename='imagens/pexels-karola-g-6629521.jpg') }}"
+            class="img-fluid w-100"
+            style="height: 280px; object-fit: cover"
+            alt="Pedras quentes"
+          />
+          <div
+            class="position-absolute bottom-0 start-0 end-0 bg-gradient-dark text-white p-3"
+          >
+            <p class="mb-0 fw-bold">Pedras Quentes</p>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- FAQ -->
 <section id="faq" class="py-5 bg-white">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Perguntas Frequentes</h2>
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="accordion" id="faqAccordion">
-                    <div class="accordion-item mb-3 border-0 shadow-sm" data-aos="fade-up">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                                <i class="bi bi-question-circle me-2 text-warning"></i>
-                                Como funciona o atendimento residencial?
-                            </button>
-                        </h2>
-                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                Vou até sua casa com todos os equipamentos necessários para um atendimento completo e profissional, garantindo seu conforto e comodidade.
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item mb-3 border-0 shadow-sm" data-aos="fade-up" data-aos-delay="100">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                                <i class="bi bi-clock me-2 text-warning"></i>
-                                Qual a duração de cada sessão?
-                            </button>
-                        </h2>
-                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                As sessões variam de 45 a 75 minutos, dependendo da técnica escolhida e das necessidades específicas de cada cliente.
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item mb-3 border-0 shadow-sm" data-aos="fade-up" data-aos-delay="200">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                                <i class="bi bi-prepare me-2 text-warning"></i>
-                                Precisa de algum preparo especial?
-                            </button>
-                        </h2>
-                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                Apenas um ambiente tranquilo e uma maca ou superfície confortável. Todo o resto levo comigo.
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item mb-3 border-0 shadow-sm" data-aos="fade-up" data-aos-delay="300">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-                                <i class="bi bi-credit-card me-2 text-warning"></i>
-                                Qual a forma de pagamento?
-                            </button>
-                        </h2>
-                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                Aceito dinheiro, cartões de crédito/débito e PIX. Pagamento realizado no momento do atendimento.
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <div class="container">
+    <h2 class="section-title" data-aos="fade-up">Perguntas Frequentes</h2>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="accordion" id="faqAccordion">
+          <div
+            class="accordion-item mb-3 border-0 shadow-sm"
+            data-aos="fade-up"
+          >
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#faq1"
+              >
+                <i class="bi bi-question-circle me-2 text-warning"></i>
+                Como funciona o atendimento residencial?
+              </button>
+            </h2>
+            <div
+              id="faq1"
+              class="accordion-collapse collapse"
+              data-bs-parent="#faqAccordion"
+            >
+              <div class="accordion-body">
+                Vou até sua casa com todos os equipamentos necessários para um
+                atendimento completo e profissional, garantindo seu conforto e
+                comodidade.
+              </div>
             </div>
+          </div>
+
+          <div
+            class="accordion-item mb-3 border-0 shadow-sm"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#faq2"
+              >
+                <i class="bi bi-clock me-2 text-warning"></i>
+                Qual a duração de cada sessão?
+              </button>
+            </h2>
+            <div
+              id="faq2"
+              class="accordion-collapse collapse"
+              data-bs-parent="#faqAccordion"
+            >
+              <div class="accordion-body">
+                As sessões variam de 45 a 75 minutos, dependendo da técnica
+                escolhida e das necessidades específicas de cada cliente.
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="accordion-item mb-3 border-0 shadow-sm"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#faq3"
+              >
+                <i class="bi bi-prepare me-2 text-warning"></i>
+                Precisa de algum preparo especial?
+              </button>
+            </h2>
+            <div
+              id="faq3"
+              class="accordion-collapse collapse"
+              data-bs-parent="#faqAccordion"
+            >
+              <div class="accordion-body">
+                Apenas um ambiente tranquilo e uma maca ou superfície
+                confortável. Todo o resto levo comigo.
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="accordion-item mb-3 border-0 shadow-sm"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#faq4"
+              >
+                <i class="bi bi-credit-card me-2 text-warning"></i>
+                Qual a forma de pagamento?
+              </button>
+            </h2>
+            <div
+              id="faq4"
+              class="accordion-collapse collapse"
+              data-bs-parent="#faqAccordion"
+            >
+              <div class="accordion-body">
+                Aceito dinheiro, cartões de crédito/débito e PIX. Pagamento
+                realizado no momento do atendimento.
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- Call to Action -->
-<section class="py-5" style="background: linear-gradient(135deg, var(--vinho-escuro), var(--vinho));">
-    <div class="container text-center text-white">
-        <h2 class="mb-4" data-aos="fade-up">Pronto para relaxar e renovar suas energias?</h2>
-        <p class="lead mb-4" data-aos="fade-up">Agende seu atendimento e descubra o poder transformador da massoterapia</p>
-        <a href="{{ url_for('auth.registro') }}" class="btn btn-premium btn-lg" data-aos="zoom-in">
-            <i class="bi bi-calendar-week"></i> Agendar Atendimento
-        </a>
-    </div>
+<section
+  class="py-5"
+  style="background: linear-gradient(135deg, var(--vinho-escuro), var(--vinho))"
+>
+  <div class="container text-center text-white">
+    <h2 class="mb-4" data-aos="fade-up">
+      Pronto para relaxar e renovar suas energias?
+    </h2>
+    <p class="lead mb-4" data-aos="fade-up">
+      Agende seu atendimento e descubra o poder transformador da massoterapia
+    </p>
+    <a
+      href="{{ url_for('auth.registro') }}"
+      class="btn btn-premium btn-lg"
+      data-aos="zoom-in"
+    >
+      <i class="bi bi-calendar-week"></i> Agendar Atendimento
+    </a>
+  </div>
 </section>
 
 <style>
-    .bg-gradient-dark {
-        background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    }
+  .bg-gradient-dark {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  }
 </style>
 
 <script>
-    // Sistema de avaliação por estrelas
-    let selectedRating = 0;
-    const stars = document.querySelectorAll('.rating-star');
-    const ratingInput = document.getElementById('avaliacao');
-    
+  // Sistema de avaliação por estrelas
+  let selectedRating = 0;
+  const stars = document.querySelectorAll(".rating-star");
+  const ratingInput = document.getElementById("avaliacao");
+
+  if (stars.length > 0) {
+    stars.forEach((star) => {
+      star.addEventListener("mouseover", function () {
+        const rating = parseInt(this.dataset.rating);
+        highlightStars(rating);
+      });
+
+      star.addEventListener("mouseout", function () {
+        highlightStars(selectedRating);
+      });
+
+      star.addEventListener("click", function () {
+        selectedRating = parseInt(this.dataset.rating);
+        ratingInput.value = selectedRating;
+        highlightStars(selectedRating);
+      });
+    });
+  }
+
+  function highlightStars(rating) {
     if (stars.length > 0) {
-        stars.forEach(star => {
-            star.addEventListener('mouseover', function() {
-                const rating = parseInt(this.dataset.rating);
-                highlightStars(rating);
-            });
-            
-            star.addEventListener('mouseout', function() {
-                highlightStars(selectedRating);
-            });
-            
-            star.addEventListener('click', function() {
-                selectedRating = parseInt(this.dataset.rating);
-                ratingInput.value = selectedRating;
-                highlightStars(selectedRating);
-            });
-        });
-    }
-    
-    function highlightStars(rating) {
-        if (stars.length > 0) {
-            stars.forEach((star, index) => {
-                if (index < rating) {
-                    star.classList.remove('bi-star');
-                    star.classList.add('bi-star-fill');
-                    star.style.color = '#FFD700';
-                } else {
-                    star.classList.remove('bi-star-fill');
-                    star.classList.add('bi-star');
-                    star.style.color = '#ddd';
-                }
-            });
+      stars.forEach((star, index) => {
+        if (index < rating) {
+          star.classList.remove("bi-star");
+          star.classList.add("bi-star-fill");
+          star.style.color = "#FFD700";
+        } else {
+          star.classList.remove("bi-star-fill");
+          star.classList.add("bi-star");
+          star.style.color = "#ddd";
         }
+      });
     }
-    
-    // Enviar depoimento via AJAX
-    const depoimentoForm = document.getElementById('depoimentoForm');
-    if (depoimentoForm) {
-        depoimentoForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const texto = document.getElementById('texto').value;
-            const avaliacao = document.getElementById('avaliacao').value;
-            const messageDiv = document.getElementById('depoimentoMessage');
-            
-            if (!texto || !avaliacao) {
-                messageDiv.innerHTML = '<div class="alert alert-danger">Por favor, preencha todos os campos.</div>';
-                return;
-            }
-            
-            const formData = new FormData();
-            formData.append('texto', texto);
-            formData.append('avaliacao', avaliacao);
-            
-            try {
-                const response = await fetch('/depoimentos/enviar', {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                const data = await response.json();
-                
-                if (data.success) {
-                    messageDiv.innerHTML = `<div class="alert alert-success">${data.message}</div>`;
-                    document.getElementById('texto').value = '';
-                    selectedRating = 0;
-                    highlightStars(0);
-                    ratingInput.value = '';
-                } else {
-                    messageDiv.innerHTML = `<div class="alert alert-danger">Erro: ${data.error}</div>`;
-                }
-            } catch (error) {
-                messageDiv.innerHTML = '<div class="alert alert-danger">Erro ao enviar depoimento.</div>';
-            }
+  }
+
+  // Enviar depoimento via AJAX
+  const depoimentoForm = document.getElementById("depoimentoForm");
+  if (depoimentoForm) {
+    depoimentoForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const texto = document.getElementById("texto").value;
+      const avaliacao = document.getElementById("avaliacao").value;
+      const messageDiv = document.getElementById("depoimentoMessage");
+
+      if (!texto || !avaliacao) {
+        messageDiv.innerHTML =
+          '<div class="alert alert-danger">Por favor, preencha todos os campos.</div>';
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("texto", texto);
+      formData.append("avaliacao", avaliacao);
+
+      try {
+        const response = await fetch("/depoimentos/enviar", {
+          method: "POST",
+          body: formData,
         });
-    }
-    
-    // Carregar depoimentos aprovados
-    async function carregarDepoimentos() {
-        try {
-            const response = await fetch('/depoimentos/listar-aprovados');
-            const depoimentos = await response.json();
-            
-            const depoimentosList = document.getElementById('depoimentosList');
-            
-            if (!depoimentosList) return;
-            
-            if (depoimentos.length === 0) {
-                depoimentosList.innerHTML = `
+
+        const data = await response.json();
+
+        if (data.success) {
+          messageDiv.innerHTML = `<div class="alert alert-success">${data.message}</div>`;
+          document.getElementById("texto").value = "";
+          selectedRating = 0;
+          highlightStars(0);
+          ratingInput.value = "";
+        } else {
+          messageDiv.innerHTML = `<div class="alert alert-danger">Erro: ${data.error}</div>`;
+        }
+      } catch (error) {
+        messageDiv.innerHTML =
+          '<div class="alert alert-danger">Erro ao enviar depoimento.</div>';
+      }
+    });
+  }
+
+  // Carregar depoimentos aprovados
+  async function carregarDepoimentos() {
+    try {
+      const response = await fetch("/depoimentos/listar-aprovados");
+      const depoimentos = await response.json();
+
+      const depoimentosList = document.getElementById("depoimentosList");
+
+      if (!depoimentosList) return;
+
+      if (depoimentos.length === 0) {
+        depoimentosList.innerHTML = `
                     <div class="col-12 text-center py-5">
                         <i class="bi bi-chat-square-text fs-1 text-muted"></i>
                         <p class="mt-3">Ainda não há depoimentos. Seja o primeiro a compartilhar sua experiência!</p>
                     </div>
                 `;
-                return;
-            }
-            
-            depoimentosList.innerHTML = depoimentos.map(dep => `
+        return;
+      }
+
+      depoimentosList.innerHTML = depoimentos
+        .map(
+          (dep) => `
                 <div class="col-md-4" data-aos="zoom-in">
                     <div class="card-premium p-4 h-100">
                         <div class="mb-3">
@@ -499,25 +590,27 @@
                         <small class="text-muted">${dep.data}</small>
                     </div>
                 </div>
-            `).join('');
-        } catch (error) {
-            console.error('Erro ao carregar depoimentos:', error);
-        }
+            `,
+        )
+        .join("");
+    } catch (error) {
+      console.error("Erro ao carregar depoimentos:", error);
     }
-    
-    function gerarEstrelas(avaliacao) {
-        let estrelas = '';
-        for (let i = 1; i <= 5; i++) {
-            if (i <= avaliacao) {
-                estrelas += '<i class="bi bi-star-fill text-warning"></i> ';
-            } else {
-                estrelas += '<i class="bi bi-star text-warning"></i> ';
-            }
-        }
-        return estrelas;
+  }
+
+  function gerarEstrelas(avaliacao) {
+    let estrelas = "";
+    for (let i = 1; i <= 5; i++) {
+      if (i <= avaliacao) {
+        estrelas += '<i class="bi bi-star-fill text-warning"></i> ';
+      } else {
+        estrelas += '<i class="bi bi-star text-warning"></i> ';
+      }
     }
-    
-    // Carregar depoimentos quando a página abrir
-    document.addEventListener('DOMContentLoaded', carregarDepoimentos);
+    return estrelas;
+  }
+
+  // Carregar depoimentos quando a página abrir
+  document.addEventListener("DOMContentLoaded", carregarDepoimentos);
 </script>
 {% endblock %}

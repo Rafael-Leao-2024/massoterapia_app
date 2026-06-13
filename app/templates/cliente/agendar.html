@@ -1,72 +1,86 @@
-{# app/templates/cliente/agendar.html #}
-{% extends "base.html" %}
-
-{% block content %}
+{# app/templates/cliente/agendar.html #} {% extends "base.html" %} {% block
+content %}
 <div class="container mt-5 pt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card-premium p-4">
-                <h3 class="mb-4 text-center">Novo Agendamento</h3>
-                
-                <form method="POST" id="agendamentoForm">
-                    <div class="mb-3">
-                        <label for="servico" class="form-label">Serviço</label>
-                        <select name="servico" id="servico" class="form-control" required>
-                            <option value="">Selecione um serviço</option>
-                            <option value="MASSAGEM_RELAXANTE">Massagem Relaxante - R$ 120</option>
-                            <option value="VENTOSATERAPIA">Ventosaterapia - R$ 100</option>
-                            <option value="VENTOSA_DESLIZANTE">Ventosa Deslizante - R$ 130</option>
-                            <option value="PEDRAS_QUENTES">Massagem com Pedras Quentes - R$ 160</option>
-                            <option value="LIBERACAO_MUSCULAR">Liberação Muscular - R$ 140</option>
-                        </select>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="data" class="form-label">Data</label>
-                        <input type="date" name="data" id="data" class="form-control" required min="{{ now.date() }}">
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="horario" class="form-label">Horário</label>
-                        <select name="horario" id="horario" class="form-control" required>
-                            <option value="">Selecione uma data primeiro</option>
-                        </select>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="observacao" class="form-label">Observações (opcional)</label>
-                        <textarea name="observacao" id="observacao" class="form-control" rows="3"></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-premium w-100">
-                        <i class="bi bi-check-circle"></i> Confirmar Agendamento
-                    </button>
-                </form>
-            </div>
-        </div>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card-premium p-4">
+        <h3 class="mb-4 text-center">Novo Agendamento</h3>
+
+        <form method="POST" id="agendamentoForm">
+          <div class="mb-3">
+            <label for="servico" class="form-label">Serviço</label>
+            <select name="servico" id="servico" class="form-control" required>
+              <option value="">Selecione um serviço</option>
+              {% for servico in servicos %}
+              <option
+                value="{{ servico.nome|upper|replace(' ', '_')|replace('+', '') }}"
+              >
+                {{ servico.nome }} - {{ servico.preco }}
+              </option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="data" class="form-label">Data</label>
+            <input
+              type="date"
+              name="data"
+              id="data"
+              class="form-control"
+              required
+              min="{{ now.date() }}"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="horario" class="form-label">Horário</label>
+            <select name="horario" id="horario" class="form-control" required>
+              <option value="">Selecione uma data primeiro</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="observacao" class="form-label"
+              >Observações (opcional)</label
+            >
+            <textarea
+              name="observacao"
+              id="observacao"
+              class="form-control"
+              rows="3"
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-premium w-100">
+            <i class="bi bi-check-circle"></i> Confirmar Agendamento
+          </button>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
 
 {% block extra_js %}
 <script>
-    document.getElementById('data').addEventListener('change', function() {
-        const data = this.value;
-        const horarioSelect = document.getElementById('horario');
-        
-        if (data) {
-            fetch(`/cliente/horarios-disponiveis?data=${data}`)
-                .then(response => response.json())
-                .then(data => {
-                    horarioSelect.innerHTML = '<option value="">Selecione um horário</option>';
-                    data.horarios.forEach(horario => {
-                        const option = document.createElement('option');
-                        option.value = horario;
-                        option.textContent = horario;
-                        horarioSelect.appendChild(option);
-                    });
-                });
-        }
-    });
+  document.getElementById("data").addEventListener("change", function () {
+    const data = this.value;
+    const horarioSelect = document.getElementById("horario");
+
+    if (data) {
+      fetch(`/cliente/horarios-disponiveis?data=${data}`)
+        .then((response) => response.json())
+        .then((data) => {
+          horarioSelect.innerHTML =
+            '<option value="">Selecione um horário</option>';
+          data.horarios.forEach((horario) => {
+            const option = document.createElement("option");
+            option.value = horario;
+            option.textContent = horario;
+            horarioSelect.appendChild(option);
+          });
+        });
+    }
+  });
 </script>
-{% endblock %}
-{% endblock %}
+{% endblock %} {% endblock %}

@@ -6,11 +6,12 @@ main_bp = Blueprint('main', __name__)
 @main_bp.route('/')
 def landing():
     servicos = [
-        {'nome': 'Massagem Relaxante', 'descricao': 'Técnica suave que promove relaxamento profundo e alívio do estresse.', 'duracao': '60min', 'preco': 'R$ 120'},
-        {'nome': 'Ventosaterapia', 'descricao': 'Terapia que utiliza ventosas para aliviar dores e tensões musculares.', 'duracao': '45min', 'preco': 'R$ 100'},
-        {'nome': 'Ventosa Deslizante', 'descricao': 'Técnica de ventosaterapia com movimentos deslizantes para maior efetividade.', 'duracao': '50min', 'preco': 'R$ 130'},
-        {'nome': 'Massagem com Pedras Quentes', 'descricao': 'Pedras aquecidas proporcionam relaxamento profundo e alívio muscular.', 'duracao': '75min', 'preco': 'R$ 160'},
-        {'nome': 'Liberação Muscular', 'descricao': 'Técnica focada em pontos específicos para liberar tensões crônicas.', 'duracao': '60min', 'preco': 'R$ 140'}
+        {'nome': 'Massagem Relaxante', 'descricao': 'Técnica suave que promove relaxamento profundo e alívio do estresse.', 'duracao': '60min', 'preco': 'R$ 100', 'icone': 'flower1'},
+        {'nome': 'Ventosaterapia', 'descricao': 'Terapia que utiliza ventosas para aliviar dores e tensões musculares.', 'duracao': '45min', 'preco': 'R$ 100', 'icone': 'cup-straw'},
+        {'nome': 'Massagem Relaxante com Ventosa Deslizante', 'descricao': 'Técnica de ventosaterapia com movimentos deslizantes para maior efetividade.', 'duracao': '50min', 'preco': 'R$ 180', 'icone': 'arrow-repeat'},
+        {'nome': 'Massagem Relaxante + Pedras Quentes', 'descricao': 'Pedras aquecidas proporcionam relaxamento profundo e alívio muscular.', 'duracao': '75min', 'preco': 'R$ 160', 'icone': 'fire'},
+        {'nome': 'Massagem nos Pés', 'descricao': 'Técnica focada em pontos específicos para liberar tensões crônicas.', 'duracao': '60min', 'preco': 'R$ 40', 'icone': 'bandaid'},
+        {'nome': 'Pedras Quentes', 'descricao': 'Terapia com pedras aquecidas para relaxamento e alívio de dores.', 'duracao': '60min', 'preco': 'R$ 85', 'icone': 'house-heart'}
     ]
     
     beneficios = [

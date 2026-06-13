@@ -9,6 +9,15 @@ from datetime import datetime, timedelta
 
 cliente_bp = Blueprint('cliente', __name__)
 
+servicos = [
+    {'nome': 'Massagem Relaxante', 'descricao': 'Técnica suave que promove relaxamento profundo e alívio do estresse.', 'duracao': '60min', 'preco': 'R$ 100', 'icone': 'flower1'},
+    {'nome': 'Ventosaterapia', 'descricao': 'Terapia que utiliza ventosas para aliviar dores e tensões musculares.', 'duracao': '45min', 'preco': 'R$ 100', 'icone': 'cup-straw'},
+    {'nome': 'Massagem Relaxante com Ventosa Deslizante', 'descricao': 'Técnica de ventosaterapia com movimentos deslizantes para maior efetividade.', 'duracao': '50min', 'preco': 'R$ 180', 'icone': 'arrow-repeat'},
+    {'nome': 'Massagem Relaxante + Pedras Quentes', 'descricao': 'Pedras aquecidas proporcionam relaxamento profundo e alívio muscular.', 'duracao': '75min', 'preco': 'R$ 160', 'icone': 'fire'},
+    {'nome': 'Massagem nos Pés', 'descricao': 'Técnica focada em pontos específicos para liberar tensões crônicas.', 'duracao': '60min', 'preco': 'R$ 40', 'icone': 'bandaid'},
+    {'nome': 'Pedras Quentes', 'descricao': 'Terapia com pedras aquecidas para relaxamento e alívio de dores.', 'duracao': '60min', 'preco': 'R$ 85', 'icone': 'house-heart'}
+]
+
 @cliente_bp.route('/painel')
 @login_required
 def painel():
@@ -77,7 +86,7 @@ def agendar():
         flash('Agendamento realizado com sucesso! Aguardando confirmação.', 'success')
         return redirect(url_for('cliente.painel'))
     
-    return render_template('cliente/agendar.html', now=datetime.now())
+    return render_template('cliente/agendar.html', now=datetime.now(), servicos=servicos)
 
 @cliente_bp.route('/agendamento/<int:id>/cancelar', methods=['POST'])
 @login_required

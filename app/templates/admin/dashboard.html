@@ -124,8 +124,8 @@ content %}
             <tbody>
               {% for ag in agendamentos_recentes %}
               <tr>
-                <td>{{ ag.usuario.nome }}</td>
-                <td>{{ ag.servico_display }}</td>
+                <td>{{ ag.usuario.nome.title().split()[0] }}</td>
+                <td>{{ ag.servico_display.lower().replace('_', ' ') }}</td>
                 <td>{{ ag.data.strftime('%d/%m/%Y') }}</td>
                 <td>{{ ag.horario.strftime('%H:%M') }}</td>
                 <td>
