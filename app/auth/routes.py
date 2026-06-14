@@ -27,6 +27,7 @@ def login():
     if current_user.is_authenticated:
         if current_user.admin:
             return redirect(url_for('admin.dashboard'))
+        print("Usuário já autenticado:", current_user.nome)  # Debug: Verificar o nome do usuário autenticado
         return redirect(url_for('cliente.painel'))
     
     if request.method == 'POST':
@@ -37,6 +38,7 @@ def login():
         
         if user and user.senha and user.check_senha(senha):
             login_user(user)
+            print("Usuário autenticado com sucesso:", user.nome)  # Debug: Verificar o nome do usuário autenticado
             flash('Login realizado com sucesso!', 'success')
             
             if user.admin:
@@ -77,6 +79,7 @@ def registro():
         db.session.commit()
         
         login_user(user)
+        print("Novo usuário registrado e autenticado:", user.nome)  # Debug: Verificar o nome do novo usuário registrado
         flash('Cadastro realizado com sucesso!', 'success')
         return redirect(url_for('cliente.painel'))
     
@@ -111,6 +114,7 @@ def google_callback():
         flash('Conta criada com sucesso via Google!', 'success')
     
     login_user(user)
+    print("Usuário autenticado via Google:", user.nome)  # Debug: Verificar o nome do usuário autenticado via Google
     
     if user.admin:
         return redirect(url_for('admin.dashboard'))

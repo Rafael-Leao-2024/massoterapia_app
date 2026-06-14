@@ -82,6 +82,7 @@ def agendar():
         
         db.session.add(agendamento)
         db.session.commit()
+        print(f"Novo agendamento criado: {servico} em {data} às {horario} para usuário {current_user.nome}")  # Debug: Verificar detalhes do novo agendamento
         
         flash('Agendamento realizado com sucesso! Aguardando confirmação.', 'success')
         return redirect(url_for('cliente.painel'))
@@ -103,6 +104,7 @@ def cancelar_agendamento(id):
     
     agendamento.status = 'CANCELADO'
     db.session.commit()
+    print(f"Agendamento cancelado: {agendamento.servico} em {agendamento.data} às {agendamento.horario} para usuário {current_user.nome}")  # Debug: Verificar detalhes do agendamento cancelado
     
     flash('Agendamento cancelado com sucesso.', 'success')
     return redirect(url_for('cliente.painel'))

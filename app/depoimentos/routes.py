@@ -32,6 +32,7 @@ def enviar_depoimento():
         
         db.session.add(depoimento)
         db.session.commit()
+        print(f"Novo depoimento enviado: {texto[:30]}... com avaliação {avaliacao} por usuário {current_user.nome}")  # Debug: Verificar detalhes do novo depoimento
         
         return jsonify({'success': True, 'message': 'Depoimento enviado com sucesso! Aguardando aprovação.'})
     
@@ -78,7 +79,8 @@ def aprovar_depoimento(id):
     depoimento.status = 'APROVADO'
     depoimento.aprovado_em = datetime.utcnow()
     db.session.commit()
-    
+    print(f"Depoimento aprovado: ID {id} por admin {current_user.nome}")  # Debug: Verificar detalhes do depoimento aprovado
+
     flash('Depoimento aprovado com sucesso!', 'success')
     return redirect(url_for('depoimentos.admin_pendentes'))
 
@@ -91,6 +93,7 @@ def rejeitar_depoimento(id):
     depoimento = Depoimento.query.get_or_404(id)
     db.session.delete(depoimento)
     db.session.commit()
+    print(f"Depoimento rejeitado e removido: ID {id} por admin {current_user.nome}")  # Debug: Verificar detalhes do depoimento rejeitado
     
     flash('Depoimento rejeitado e removido.', 'info')
     return redirect(url_for('depoimentos.admin_pendentes'))
